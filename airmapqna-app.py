@@ -39,12 +39,17 @@ st.markdown("""
 <style>
     .main-header {
         text-align: center;
-        padding: 1rem;
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        padding: 0.5rem;
+        background: linear-gradient(90deg, #066CEA 0%, #18CBEB 100%);
         color: white;
         border-radius: 10px;
         margin-bottom: 2rem;
     }
+            
+    .main-header h1 {
+        font-size: 2rem;
+    }
+
     
     /* 채팅 입력 영역 고정 */
     .stChatInput > div {
@@ -211,9 +216,7 @@ def main():
     # 사이드바
     with st.sidebar:
         st.header("☀️ 에어맵 운영 Q&A")
-        st.info("✔️ 리눅스 전문가")
-        st.info("✔️ PostgreSQL 전문가") 
-        st.info("✔️ 위키 검색 (Confluence)")
+        st.info("에어맵 위키(Confluence) 내용 기반의 운영 이력을 검색하고, 리눅스 및 PostgreSQL 관련 운영시 필요한 검색에 활용합니다.")
         
         st.header("⚙️설정")
         if st.button("대화 기록 초기화"):
@@ -221,9 +224,9 @@ def main():
             st.rerun()
         
         st.header("🔎 사용 팁")
-        st.write("• 리눅스 관련 질문은 'linux' 또는 '리눅스' 포함")
-        st.write("• PostgreSQL 관련 질문은 'postgres' 포함")
-        st.write("• 기타 질문은 위키에서 검색됩니다")
+        st.write("✓&nbsp;&nbsp;리눅스 관련 질문시 'linux' 또는 '리눅스' 포함")
+        st.write("✓&nbsp;&nbsp;PostgreSQL 관련 질문시 'postgres' 또는 'postgresql' 포함")
+        st.write("✓&nbsp;&nbsp;그외 키워드에 대한 질문은 위키에서만 검색되고, 다른 정보 검색은 불가능합니다.")
 
     # 클라이언트 로드
     clients = load_clients()
@@ -239,7 +242,7 @@ def main():
     if not st.session_state.messages:
         st.session_state.messages.append({
             "role": "assistant",
-            "content": "안녕하세요! 통합 정보 검색 챗봇입니다. 리눅스, PostgreSQL, 위키 정보에 대해 질문해보세요."
+            "content": "안녕하세요! 에어맵 서비스 운영하면서 궁금한 것들을 물어보세요."
         })
 
     # 채팅 기록 표시
