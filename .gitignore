@@ -1,2 +1,5 @@
 .env
 .vscode/*
+uv.lock
+.python-version
+pyproject.toml
