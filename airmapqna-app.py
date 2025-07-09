@@ -48,8 +48,11 @@ st.markdown("""
             
     .main-header h1 {
         font-size: 2rem;
+    }            
+    
+    [data-testid="stSidebar"] {
+        background-color: #F3F3EE; 
     }
-
     
     /* 채팅 입력 영역 고정 */
     .stChatInput > div {
