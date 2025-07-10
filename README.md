@@ -54,7 +54,7 @@ pip install streamlit python-dotenv openai azure-search-documents
 ```
 
 2. **환경 변수 설정**
-    - 프로젝트 루트에 `.env` 파일을 생성하고 아래 환경 변수를 입력하세요.
+<br>프로젝트 루트에 `.env` 파일을 생성하고 아래 환경 변수를 입력.
 
 ```
 # Azure OpenAI (RAG 및 임베딩용)
