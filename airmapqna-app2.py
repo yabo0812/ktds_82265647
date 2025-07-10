@@ -124,28 +124,28 @@ def get_rag_response(query, azure_openai_client, search_client):
             model=AZURE_OPENAI_EMBBEDING_DEPLOYMENT_NAME
         ).data[0].embedding
         
-        vector_query = VectorizedQuery(vector=embedding_response, k_nearest_neighbors=3, fields="content_embedding")
+        vector_query = VectorizedQuery(vector=embedding_response, k_nearest_neighbors=3, fields="text_vector")
 
         # 2. Azure AI Search에서 하이브리드 검색 (텍스트 + 벡터)
         results = search_client.search(
             search_text=query,
             vector_queries=[vector_query],
-            select=["document_title", "content_text"],
+            select=["title", "chunk"],
             top=10
         )
 
         # 3. 검색 결과를 컨텍스트로 구성
         formatted_results = []
         for result in results:            
-            title = result.get("document_title", "제목 없음")
-            content = result.get("content_text", "")
+            title = result.get("title", "제목 없음")
+            chunk = result.get("chunk", "")
             score = result.get('@search.rerank_score', result.get('@search.score', 0.0))
-            if content:
+            if chunk:
                 formatted_results.append(
                     f"[문서 정보]\n"
                     f"제목: {title}\n"
                     f"관련성 점수: {score:.4f}\n\n"
-                    f"[내용]\n{content}...\n"
+                    f"[내용]\n{chunk}...\n"
                 )
         context = "\n\n---\n\n".join(formatted_results)
         
