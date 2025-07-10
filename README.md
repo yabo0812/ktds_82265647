@@ -48,16 +48,25 @@ pip install streamlit python-dotenv openai azure-search-documents
     - 프로젝트 루트에 `.env` 파일을 생성하고 아래 환경 변수를 입력하세요.
 
 ```
+# Azure OpenAI (RAG 및 임베딩용)
 AZURE_OPENAI_API_KEY=your_openai_api_key
 AZURE_OPENAI_ENDPOINT=your_openai_endpoint
 AZURE_OPENAI_EMBBEDING_MODEL_NAME=your_embedding_model_name
 AZURE_OPENAI_EMBBEDING_DEPLOYMENT_NAME=your_embedding_deployment_name
 AZURE_OPENAI_EMBBEDING_API_VERSION=your_embedding_api_version
+# Azure OpenAI (오픈 검색용)
 AZURE_OPENAI_CHAT_MODEL_NAME=your_chat_model_name
 AZURE_OPENAI_CHAT_DEPLOYMENT_NAME=your_chat_deployment_name
+AZURE_OPENAI_CHAT_API_VERSION=your_chat_api_version
+
+# Azure AI Search (RAG 검색용)
 AZURE_SEARCH_SERVICE_ENDPOINT=your_search_service_endpoint
-AZURE_SEARCH_API_KEY=your_search_api_key
 AZURE_SEARCH_INDEX_NAME=your_search_index_name
+AZURE_SEARCH_API_KEY=your_search_api_key
+
+# Azure Storage (md 저장용)
+AZURE_STORAGE_CONNECTION_STRING=your_storage_connection_string
+AZURE_STORAGE_CONTAINER_NAME=your_storage_container_name
 ```
 
 3. **앱 실행**
