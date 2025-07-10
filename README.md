@@ -76,8 +76,8 @@ streamlit run airmapqna-app.py
 ```
 ## 파일 구조
 
-| 파일명 | 설명 |
-| :-- | :-- |
+|파일명|설명|
+|---|:---|
 | airmapqna-app.py | 메인 Streamlit 앱 코드 |
 | .env | 환경 변수 파일 (직접 생성 필요) |
 
