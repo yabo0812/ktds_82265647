@@ -1,6 +1,5 @@
 import os
 import time
-import openai
 from dotenv import load_dotenv
 import fitz  # PyMuPDF
 from openai import AzureOpenAI
@@ -12,10 +11,10 @@ import io
 # 환경변수 
 load_dotenv()
 # Azure OpenAI 설정
-azure_api_key = os.getenv("OPENAI_API_KEY")
-azure_endpoint = os.getenv("OPENAI_ENDPOINT") # Azure OpenAI 엔드포인트
-azure_api_version = os.getenv("OPENAI_API_VERSION")  # Azure OpenAI API 버전
-azure_deployment_name = os.getenv("OPENAI_CHAT_DEPLOYMENT_NAME")   # Azure OpenAI 배포된 모델 이름
+azure_api_key = os.getenv("AZURE_OPENAI_API_KEY")
+azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT") # Azure OpenAI 엔드포인트
+azure_api_version = os.getenv("AZURE_OPENAI_CHAT_API_VERSION")  # Azure OpenAI API 버전
+azure_deployment_name = os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT_NAME")   # Azure OpenAI 배포된 모델 이름
 
 # OpenAI 클라이언트 초기화
 client = AzureOpenAI(
