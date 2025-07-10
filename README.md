@@ -24,3 +24,77 @@
 - Streamlit을 이용하여 웹 UI로 Q&A 챗봇 앱 스크립트 작성.
 - Streamlit 앱을 Azure App Service로 배포. 
 - https://user15-demoweb-a7drcgfyhabpevf8.eastus2-01.azurewebsites.net/ 접속하여 내용 확인.
+
+## 주요 기능
+
+- **주제별 질문 라우팅**:
+    - 리눅스, PostgreSQL, 위키 관련 질문을 자동 분류하여 최적의 답변 경로로 안내
+- **RAG 기반 답변**:
+    - Azure AI Search와 OpenAI를 활용한 위키 문서 검색 및 답변 생성
+- **전문가 답변**:
+    - 리눅스, PostgreSQL 질문에 대해 전문가 수준의 답변 및 코드 예시 제공
+- **Streamlit 기반 UI**:
+    - 간편한 웹 인터페이스 제공
+
+## 설치 및 실행 방법
+
+1. **필수 패키지 설치**
+
+```bash
+pip install streamlit python-dotenv openai azure-search-documents
+```
+
+2. **환경 변수 설정**
+    - 프로젝트 루트에 `.env` 파일을 생성하고 아래 환경 변수를 입력하세요.
+
+```
+AZURE_OPENAI_API_KEY=your_openai_api_key
+AZURE_OPENAI_ENDPOINT=your_openai_endpoint
+AZURE_OPENAI_EMBBEDING_MODEL_NAME=your_embedding_model_name
+AZURE_OPENAI_EMBBEDING_DEPLOYMENT_NAME=your_embedding_deployment_name
+AZURE_OPENAI_EMBBEDING_API_VERSION=your_embedding_api_version
+AZURE_OPENAI_CHAT_MODEL_NAME=your_chat_model_name
+AZURE_OPENAI_CHAT_DEPLOYMENT_NAME=your_chat_deployment_name
+AZURE_SEARCH_SERVICE_ENDPOINT=your_search_service_endpoint
+AZURE_SEARCH_API_KEY=your_search_api_key
+AZURE_SEARCH_INDEX_NAME=your_search_index_name
+```
+
+3. **앱 실행**
+
+```bash
+streamlit run airmapqna-app.py
+```
+## 파일 구조
+
+| 파일명 | 설명 |
+| :-- | :-- |
+| airmapqna-app.py | 메인 Streamlit 앱 코드 |
+| .env | 환경 변수 파일 (직접 생성 필요) |
+
+## 주요 코드 설명
+
+- **클라이언트 초기화**:
+Azure OpenAI 및 Azure AI Search 클라이언트 객체를 초기화하고 캐시하여 사용합니다.
+- **질문 라우팅**:
+질문 내용에 따라 리눅스, PostgreSQL, 위키로 분기하여 처리합니다.
+- **RAG 답변 생성**:
+위키 관련 질문은 임베딩 및 벡터 검색을 통해 관련 문서를 찾고, LLM을 이용해 답변을 생성합니다.
+- **전문가 답변 생성**:
+리눅스/포스트그레SQL 질문은 전문가 프롬프트를 사용해 답변을 생성합니다.
+- **Streamlit UI**:
+간단한 웹 UI를 통해 질문 입력 및 답변 확인이 가능합니다.
+
+[ ![텍스트](https://cdn-0.plantuml.com/plantuml/png/dPBDIiD058NtynHtsIB5lGjfbq95fBYMK0SCf6cSJ1Qw2ZQ5sY8YLAWIIuIg5Ih4LB6WJvIvymvEC11Z2lva5MRE_SuvpAtQN6FSQHb4Q_8sWnsRCcAf8xsfMvh9eS4PrLg6pckMbRke7JcCRbdKh6qKpnjKOyrzGX8SLDPp55W3lE-9sG9mt1N1BSbT5iMixN2wU-1Gc-jjiwH-s66PQ0O7z3rvF4bf1DJt3VKrP68xzaGKYE43uDKGeyTa92Uf5DspcJWAu_axY70aBqVBtRBgQb94Dz8BLsJt5FiJsLyeW8kTaymqLIunZPzT4Kn1jKBF_yanwrUlRu8Ol8Yv2zYvHkyfxGabV9jcEUJPJ5vCoxzfdzBI1DImAOYxcUXr5MfLSJw9yUj21Bt6TlqFJn5uIXY7xjB0_uXcxXNsA5c-J2ZFVHpufAgKQjq_0000) ]( [링크URL](https://cdn-0.plantuml.com/plantuml/png/dPBDIiD058NtynHtsIB5lGjfbq95fBYMK0SCf6cSJ1Qw2ZQ5sY8YLAWIIuIg5Ih4LB6WJvIvymvEC11Z2lva5MRE_SuvpAtQN6FSQHb4Q_8sWnsRCcAf8xsfMvh9eS4PrLg6pckMbRke7JcCRbdKh6qKpnjKOyrzGX8SLDPp55W3lE-9sG9mt1N1BSbT5iMixN2wU-1Gc-jjiwH-s66PQ0O7z3rvF4bf1DJt3VKrP68xzaGKYE43uDKGeyTa92Uf5DspcJWAu_axY70aBqVBtRBgQb94Dz8BLsJt5FiJsLyeW8kTaymqLIunZPzT4Kn1jKBF_yanwrUlRu8Ol8Yv2zYvHkyfxGabV9jcEUJPJ5vCoxzfdzBI1DImAOYxcUXr5MfLSJw9yUj21Bt6TlqFJn5uIXY7xjB0_uXcxXNsA5c-J2ZFVHpufAgKQjq_0000) )
+
+<img src="https://cdn-0.plantuml.com/plantuml/png/dPBDIiD058NtynHtsIB5lGjfbq95fBYMK0SCf6cSJ1Qw2ZQ5sY8YLAWIIuIg5Ih4LB6WJvIvymvEC11Z2lva5MRE_SuvpAtQN6FSQHb4Q_8sWnsRCcAf8xsfMvh9eS4PrLg6pckMbRke7JcCRbdKh6qKpnjKOyrzGX8SLDPp55W3lE-9sG9mt1N1BSbT5iMixN2wU-1Gc-jjiwH-s66PQ0O7z3rvF4bf1DJt3VKrP68xzaGKYE43uDKGeyTa92Uf5DspcJWAu_axY70aBqVBtRBgQb94Dz8BLsJt5FiJsLyeW8kTaymqLIunZPzT4Kn1jKBF_yanwrUlRu8Ol8Yv2zYvHkyfxGabV9jcEUJPJ5vCoxzfdzBI1DImAOYxcUXr5MfLSJw9yUj21Bt6TlqFJn5uIXY7xjB0_uXcxXNsA5c-J2ZFVHpufAgKQjq_0000" width="400px" alt="sample image">
+
+
+## 사용 예시
+
+1. **리눅스 명령어 관련 질문**
+    - 예: `리눅스에서 파일 권한 변경 방법 알려줘`
+2. **PostgreSQL 튜닝 질문**
+    - 예: `PostgreSQL 인덱스 최적화 방법은?`
+3. **사내 위키 정보 검색**
+    - 예: `에어맵 시스템 구조 설명해줘`
