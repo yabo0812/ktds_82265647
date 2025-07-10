@@ -6,7 +6,7 @@
  
 이런 어려움을 이번 챗봇 에이전트 생성을 통해 해소해 보고자 함.
 
-## 작업 순서
+## 단게별 작업 설명
 - Concluence에서 위키 페이지를 pdf로 다운로드
    * 크롤링시도하였으나 로그인 세션 생성에서 실패.
    * 사이트 전체를 html로 다운로드 하였으나 불필요하고 반복적인 tag가 너무 많아서 실패.
@@ -85,10 +85,7 @@ Azure OpenAI 및 Azure AI Search 클라이언트 객체를 초기화하고 캐�
 - **Streamlit UI**:
 간단한 웹 UI를 통해 질문 입력 및 답변 확인이 가능합니다.
 
-[ ![텍스트](https://cdn-0.plantuml.com/plantuml/png/dPBDIiD058NtynHtsIB5lGjfbq95fBYMK0SCf6cSJ1Qw2ZQ5sY8YLAWIIuIg5Ih4LB6WJvIvymvEC11Z2lva5MRE_SuvpAtQN6FSQHb4Q_8sWnsRCcAf8xsfMvh9eS4PrLg6pckMbRke7JcCRbdKh6qKpnjKOyrzGX8SLDPp55W3lE-9sG9mt1N1BSbT5iMixN2wU-1Gc-jjiwH-s66PQ0O7z3rvF4bf1DJt3VKrP68xzaGKYE43uDKGeyTa92Uf5DspcJWAu_axY70aBqVBtRBgQb94Dz8BLsJt5FiJsLyeW8kTaymqLIunZPzT4Kn1jKBF_yanwrUlRu8Ol8Yv2zYvHkyfxGabV9jcEUJPJ5vCoxzfdzBI1DImAOYxcUXr5MfLSJw9yUj21Bt6TlqFJn5uIXY7xjB0_uXcxXNsA5c-J2ZFVHpufAgKQjq_0000) ]( [링크URL](https://cdn-0.plantuml.com/plantuml/png/dPBDIiD058NtynHtsIB5lGjfbq95fBYMK0SCf6cSJ1Qw2ZQ5sY8YLAWIIuIg5Ih4LB6WJvIvymvEC11Z2lva5MRE_SuvpAtQN6FSQHb4Q_8sWnsRCcAf8xsfMvh9eS4PrLg6pckMbRke7JcCRbdKh6qKpnjKOyrzGX8SLDPp55W3lE-9sG9mt1N1BSbT5iMixN2wU-1Gc-jjiwH-s66PQ0O7z3rvF4bf1DJt3VKrP68xzaGKYE43uDKGeyTa92Uf5DspcJWAu_axY70aBqVBtRBgQb94Dz8BLsJt5FiJsLyeW8kTaymqLIunZPzT4Kn1jKBF_yanwrUlRu8Ol8Yv2zYvHkyfxGabV9jcEUJPJ5vCoxzfdzBI1DImAOYxcUXr5MfLSJw9yUj21Bt6TlqFJn5uIXY7xjB0_uXcxXNsA5c-J2ZFVHpufAgKQjq_0000) )
-
-<img src="https://cdn-0.plantuml.com/plantuml/png/dPBDIiD058NtynHtsIB5lGjfbq95fBYMK0SCf6cSJ1Qw2ZQ5sY8YLAWIIuIg5Ih4LB6WJvIvymvEC11Z2lva5MRE_SuvpAtQN6FSQHb4Q_8sWnsRCcAf8xsfMvh9eS4PrLg6pckMbRke7JcCRbdKh6qKpnjKOyrzGX8SLDPp55W3lE-9sG9mt1N1BSbT5iMixN2wU-1Gc-jjiwH-s66PQ0O7z3rvF4bf1DJt3VKrP68xzaGKYE43uDKGeyTa92Uf5DspcJWAu_axY70aBqVBtRBgQb94Dz8BLsJt5FiJsLyeW8kTaymqLIunZPzT4Kn1jKBF_yanwrUlRu8Ol8Yv2zYvHkyfxGabV9jcEUJPJ5vCoxzfdzBI1DImAOYxcUXr5MfLSJw9yUj21Bt6TlqFJn5uIXY7xjB0_uXcxXNsA5c-J2ZFVHpufAgKQjq_0000" width="400px" alt="sample image">
-
+![airmap-uml.png](airmap-uml.png)
 
 ## 사용 예시
 
