@@ -36,6 +36,8 @@
 - **Streamlit 기반 UI**:
     - 간편한 웹 인터페이스 제공
 
+![airmapqna.png](airmapqna.png)
+
 ## 설치 및 실행 방법
 
 1. **필수 패키지 설치**
@@ -81,18 +83,20 @@ streamlit run airmapqna-app.py
 | airmapqna-app.py | 메인 Streamlit 앱 코드 |
 | .env | 환경 변수 파일 (직접 생성 필요) |
 
-## 주요 코드 설명
+## 주요 흐름
 
-- **클라이언트 초기화**:
-Azure OpenAI 및 Azure AI Search 클라이언트 객체를 초기화하고 캐시하여 사용합니다.
-- **질문 라우팅**:
-질문 내용에 따라 리눅스, PostgreSQL, 위키로 분기하여 처리합니다.
-- **RAG 답변 생성**:
-위키 관련 질문은 임베딩 및 벡터 검색을 통해 관련 문서를 찾고, LLM을 이용해 답변을 생성합니다.
-- **전문가 답변 생성**:
-리눅스/포스트그레SQL 질문은 전문가 프롬프트를 사용해 답변을 생성합니다.
-- **Streamlit UI**:
-간단한 웹 UI를 통해 질문 입력 및 답변 확인이 가능합니다.
+- **PDF 업로드**:
+Azure Storage에 PDF 파일을 업로드
+- **파싱 및 인덱싱**:
+-- PDF Parser가 Storage에서 PDF를 다운로드
+-- 텍스트/이미지 추출, 청크 분할
+-- 각 청크에 대해 demp-text-embedding-3-small 임베딩 생성
+-- 임베딩+텍스트를 Azure AI Search에 인덱싱
+- **질의 및 답변**:
+-- 사용자가 Streamlit 앱에 질의 입력
+-- 위키 검색: 질의 임베딩 → 벡터+텍스트 검색 → 컨텍스트 기반으로 gpt-4.1 답변
+-- 리눅스/포스트그레SQL: 질의를 바로 gpt-4.1로 전달해 답변 생성
+-- 결과를 사용자에게 반환
 
 ![airmap-uml.png](airmap-uml.png)
 
